@@ -1,7 +1,17 @@
 import { API_REQUEST } from "../actions/api";
 import { normalize } from "normalizr";
-import { post } from "../lib/schema";
+
 // this middleware care only for API calls
+
+/*
+function middleware({dispatch, getState}){
+	return function(next){
+		return function(action){
+			return next(action);
+		}
+	}
+}*/
+
 export const api = ({ dispatch }) => next => action => {
 	if (action.type === API_REQUEST) {
 		const { method, url, onSuccess, onError, schema } = action.meta;
